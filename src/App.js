@@ -250,11 +250,11 @@ export default function App() {
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full max-w-2xl bg-white rounded-3xl shadow-xl overflow-hidden"
+        className="w-full max-w-2xl mx-4 sm:mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden"
       >
         {/* Search Bar */}
         <motion.div 
-          className="p-6 border-b border-gray-100"
+          className="p-4 sm:p-6 border-b border-gray-100"
           animate={{ 
             padding: isCleared ? "1.5rem" : "1.5rem",
             backgroundColor: isCleared ? "#f8f9fa" : "transparent"
@@ -262,7 +262,7 @@ export default function App() {
           transition={{ duration: 0.3 }}
         >
           <motion.div 
-            className="flex items-center gap-4"
+            className="flex items-center gap-3 sm:gap-4"
             animate={{
               scale: isCleared ? 0.9 : 1,
               opacity: isCleared ? 0.8 : 1
@@ -294,7 +294,7 @@ export default function App() {
                 }
               }}
               placeholder={isCleared ? "Searching is easier" : "Search..."}
-              className="flex-1 text-lg bg-transparent outline-none text-gray-800 placeholder-gray-400"
+              className="flex-1 text-base sm:text-lg bg-transparent outline-none text-gray-800 placeholder-gray-400"
             />
             {isCleared ? (
               <div className="flex items-center gap-2">
@@ -320,7 +320,7 @@ export default function App() {
         {/* Filter Tabs */}
         {!isCleared && (
           <motion.div 
-            className="px-6 py-4 border-b border-gray-100 relative"
+            className="px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-100 relative"
             initial={{ opacity: 1, height: "auto" }}
             animate={{ 
               opacity: isCleared ? 0 : 1,
@@ -330,10 +330,10 @@ export default function App() {
             transition={{ duration: 0.3 }}
           >
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-4 sm:gap-8 overflow-x-auto scrollbar-hide">
               <button
                 onClick={() => setActiveFilter("All")}
-                className={`relative pb-2 text-sm font-medium transition-colors ${
+                className={`relative pb-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                   activeFilter === "All" 
                     ? "text-gray-900" 
                     : "text-gray-500 hover:text-gray-700"
@@ -351,10 +351,10 @@ export default function App() {
               {settings.Files && (
                 <button
                   onClick={() => setActiveFilter("Files")}
-                  className={`relative pb-2 text-sm font-medium transition-colors  flex items-center gap-2  ${
+                  className={`relative pb-2 text-xs sm:text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2 whitespace-nowrap ${
                     activeFilter === "Files" 
                       ? "text-gray-900" 
-                      : "text-gray-500  hover:text-gray-700"
+                      : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -373,7 +373,7 @@ export default function App() {
               {settings.People && (
                 <button
                   onClick={() => setActiveFilter("People")}
-                  className={`relative pb-2 text-sm font-medium transition-colors flex items-center gap-2 ${
+                  className={`relative pb-2 text-xs sm:text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2 whitespace-nowrap ${
                     activeFilter === "People" 
                       ? "text-gray-900" 
                       : "text-gray-500 hover:text-gray-700"
@@ -395,7 +395,7 @@ export default function App() {
               {settings.Chats && (
                 <button
                   onClick={() => setActiveFilter("Chats")}
-                  className={`relative pb-2 text-sm font-medium transition-colors flex items-center gap-2 ${
+                  className={`relative pb-2 text-xs sm:text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2 whitespace-nowrap ${
                     activeFilter === "Chats" 
                       ? "text-gray-900" 
                       : "text-gray-500 hover:text-gray-700"
@@ -417,7 +417,7 @@ export default function App() {
               {settings.Lists && (
                 <button
                   onClick={() => setActiveFilter("Lists")}
-                  className={`relative pb-2 text-sm font-medium transition-colors flex items-center gap-2 ${
+                  className={`relative pb-2 text-xs sm:text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2 whitespace-nowrap ${
                     activeFilter === "Lists" 
                       ? "text-gray-900" 
                       : "text-gray-500 hover:text-gray-700"
@@ -455,7 +455,7 @@ export default function App() {
                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                className="settings-dropdown absolute top-12 right-0 bg-white rounded-2xl shadow-xl border border-gray-200 p-4 w-48 z-50"
+                className="settings-dropdown absolute top-12 right-0 sm:right-0 bg-white rounded-2xl shadow-xl border border-gray-200 p-4 w-44 sm:w-48 z-50"
               >
                 <div className="space-y-3">
                   {Object.entries(settings).map(([key, value]) => (
@@ -509,7 +509,7 @@ export default function App() {
         {/* Search Results */}
         {!isCleared && (
           <motion.div 
-            className="max-h-96 overflow-y-auto"
+            className="max-h-80 sm:max-h-96 overflow-y-auto"
             initial={{ opacity: 1, height: "auto" }}
             animate={{ 
               opacity: isCleared ? 0 : 1,
@@ -534,65 +534,65 @@ export default function App() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05, duration: 0.3 }}
                     whileHover={{ backgroundColor: "#f9fafb" }}
-                    className="p-4 hover:bg-gray-50 transition-colors cursor-pointer"
+                    className="p-3 sm:p-4 hover:bg-gray-50 transition-colors cursor-pointer"
                   >
                     {item.type === "person" ? (
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-3 sm:gap-4">
                         <div className="relative">
                           <img
                             src={item.avatar}
                             alt={item.name}
-                            className="w-10 h-10 rounded-full object-cover"
+                            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
                           />
-                          <div className={`absolute -bottom-1 -right-1 w-3 h-3 ${item.statusColor} rounded-full border-2 border-white`} />
+                          <div className={`absolute -bottom-1 -right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 ${item.statusColor} rounded-full border-2 border-white`} />
                         </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900">{item.name}</h3>
-                          <p className="text-sm text-gray-500">{item.status}</p>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-gray-900 text-sm sm:text-base truncate">{item.name}</h3>
+                          <p className="text-xs sm:text-sm text-gray-500 truncate">{item.status}</p>
                         </div>
                       </div>
                     ) : item.type === "chat" ? (
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-xl">
+                      <div className="flex items-center gap-3 sm:gap-4">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 rounded-lg flex items-center justify-center text-lg sm:text-xl">
                           {item.icon}
                         </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900">{item.name}</h3>
-                          <p className="text-sm text-gray-500">{item.details}</p>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-gray-900 text-sm sm:text-base truncate">{item.name}</h3>
+                          <p className="text-xs sm:text-sm text-gray-500 truncate">{item.details}</p>
                         </div>
                       </div>
                     ) : item.type === "list" ? (
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-xl">
+                      <div className="flex items-center gap-3 sm:gap-4">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 rounded-lg flex items-center justify-center text-lg sm:text-xl">
                           {item.icon}
                         </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900">{item.name}</h3>
-                          <p className="text-sm text-gray-500">{item.details}</p>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-gray-900 text-sm sm:text-base truncate">{item.name}</h3>
+                          <p className="text-xs sm:text-sm text-gray-500 truncate">{item.details}</p>
                         </div>
                       </div>
                     ) : (
                       <div className="flex items-center justify-between group">
-                        <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-xl">
+                        <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 rounded-lg flex items-center justify-center text-lg sm:text-xl">
                             {item.icon}
                           </div>
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-gray-900">{item.name}</h3>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-semibold text-gray-900 text-sm sm:text-base truncate">{item.name}</h3>
                             {item.subtitle && (
-                              <p className="text-sm text-gray-500">{item.subtitle}</p>
+                              <p className="text-xs sm:text-sm text-gray-500 truncate">{item.subtitle}</p>
                             )}
-                            <p className="text-sm text-gray-500">{item.details}</p>
+                            <p className="text-xs sm:text-sm text-gray-500 truncate">{item.details}</p>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex items-center gap-1 sm:gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                           <div className="relative">
                             <button 
                               onClick={() => copyToClipboard(item.filePath || `/assets/files/${item.name}`, item.id)}
-                              className="p-2 hover:bg-gray-100 rounded-full transition-colors group/btn"
+                              className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full transition-colors group/btn"
                               title="Copy link"
                             >
-                              <svg className="w-4 h-4 text-gray-400 group-hover/btn:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover/btn:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                               </svg>
                             </button>
@@ -609,10 +609,10 @@ export default function App() {
                           </div>
                           <button 
                             onClick={() => openInNewTab(item.filePath || `/assets/files/${item.name}`)}
-                            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                            className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full transition-colors"
                             title="Open in new tab"
                           >
-                            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                           </button>
@@ -627,21 +627,21 @@ export default function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="p-8 text-center text-gray-500"
+                className="p-6 sm:p-8 text-center text-gray-500"
               >
-                <svg className="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                <p>No results found</p>
+                <p className="text-sm sm:text-base">No results found</p>
               </motion.div>
             ) : !isCleared && query.length === 0 ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-                className="p-8 text-center text-gray-500"
+              className="p-6 sm:p-8 text-center text-gray-500"
             >
-                <p className="text-gray-500">Type something to get started</p>
+                  <p className="text-sm sm:text-base text-gray-500">Type something to get started</p>
             </motion.div>
             ) : null}
             </AnimatePresence>
